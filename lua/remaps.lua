@@ -29,9 +29,6 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
 -- Open Neotree with SPC+e
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", {noremap = true, silent = true, desc = "Open netrw"})
 
--- Toggling the Trouble window
---vim.keymap.set('n', '<leader>t', "<cmd>TroubleToggle<CR>", {silent = true, noremap = true, desc = "Toggle Trouble"})
-
 -- Lsp keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "Lsp Actions",

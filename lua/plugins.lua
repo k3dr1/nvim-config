@@ -25,6 +25,7 @@ return {
 			vim.o.timeoutlen = 700
 		end,
 	},
+	{ 'echasnovski/mini.icons', version = false },
 
 	-- Code completion & general coding
 	{"hrsh7th/cmp-nvim-lsp"},
@@ -59,19 +60,23 @@ return {
 	{"sbdchd/neoformat"},
 
 	-- NOTETAKING
-	{ "nvim-orgmode/orgmode",
-		event = "VeryLazy",
-		ft = { "org" },
-		config = function()
-			-- Setup orgmode
-			require("orgmode").setup({
-				org_agenda_files = "~/orgfiles/**/*",
-				org_default_notes_file = "~/orgfiles/refile.org",
-			})
-		end,
-	},
+	--{ "nvim-orgmode/orgmode",
+	--	event = "VeryLazy",
+	--	ft = { "org" },
+	--	config = function()
+	--		-- Setup orgmode
+	--		require("orgmode").setup({
+	--			org_agenda_files = "~/orgfiles/**/*",
+	--			org_default_notes_file = "~/orgfiles/refile.org",
+	--		})
+	--	end,
+	--},
 
 	-- COLORSCHEMES
+	{"projekt0n/github-nvim-theme"},
+	{"killitar/obscure.nvim"},
+	{"slugbyte/lackluster.nvim"},
+	{"rebelot/kanagawa.nvim"},
 	{"Mofiqul/vscode.nvim"},
 	{"Shatur/neovim-ayu"},
 	{"kvrohit/rasmus.nvim"},
