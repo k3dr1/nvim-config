@@ -1,5 +1,9 @@
--- Font settings
+-- Command line height
 vim.o.cmdheight = 0
+
+-- Scrolloff setttings
+vim.o.scrolloff = 10
+vim.o.sidescrolloff = 10
 
 -- Change the theme
 --vim.api.nvim_command('colorscheme vscode')
