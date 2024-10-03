@@ -5,6 +5,10 @@ end
 
 vim.o.cmdheight = 1
 
+-- Scrolloff setttings
+vim.o.scrolloff = 10
+vim.o.sidescrolloff = 10
+
 -- Change the theme
 --vim.api.nvim_command('colorscheme vscode')
 --vim.api.nvim_command('colorscheme kanagawa-dragon')
