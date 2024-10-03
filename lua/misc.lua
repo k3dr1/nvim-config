@@ -1,5 +1,9 @@
 -- Font settings
-vim.o.cmdheight = 0
+if vim.g.neovide then
+	vim.o.guifont = "JetBrainsMono NFM:h11.8"
+end
+
+vim.o.cmdheight = 1
 
 -- Change the theme
 --vim.api.nvim_command('colorscheme vscode')
