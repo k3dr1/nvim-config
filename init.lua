@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
 		"--branch=stable", -- latest stable release
 		lazypath,
 	})
+
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -26,6 +27,6 @@ require("configurations.dap")
 require("configurations.lualine")
 require("configurations.which-key")
 require("configurations.autopairs")
-require("configurations.indent-blankline")
+--require("configurations.indent-blankline")
 
 --require("configurations.presence")

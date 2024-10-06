@@ -27,7 +27,10 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
 
 -- Open Neotree with SPC+e
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", {noremap = true, silent = true, desc = "Open netrw"})
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", {noremap = true, silent = true, desc = "Toggle Neotree"})
+
+-- Go to config, if you wanna go back you can execute ":cd -"
+vim.keymap.set("n", "<leader>cn", "<cmd>cd "..vim.fn.stdpath("config").."<CR>", { noremap = true, silent = true, desc = "Go to config" })
 
 -- Lsp keymaps
 vim.api.nvim_create_autocmd("LspAttach", {

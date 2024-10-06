@@ -13,7 +13,7 @@ return {
 	{"nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = {"nvim-lua/plenary.nvim"}},
 	{"nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = {"nvim-lua/plenary.nvim","nvim-tree/nvim-web-devicons","MunifTanjim/nui.nvim",}},
 	{"mfussenegger/nvim-dap"},
-	{"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}},
+	--{"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}},
 	{"mbbill/undotree"},
 	--{"andweeb/presence.nvim"},
 	{"folke/neodev.nvim"},
