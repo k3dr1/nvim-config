@@ -1,6 +1,8 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
+local installed_servers = require("mason-lspconfig").get_installed_servers()
+
 require("neodev").setup({})
 
 local lspconfig = require("lspconfig")
@@ -31,17 +33,17 @@ local lua_ls_setup = {
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.lua_ls.setup(lua_ls_setup)
-lspconfig.asm_lsp.setup{capabilities = capabilities}
-lspconfig.bashls.setup{capabilities = capabilities}
-lspconfig.clangd.setup{capabilities = capabilities,
-	cmd = {"clangd", "--fallback-style=webkit"}
-}
-lspconfig.pyright.setup{capabilities = capabilities}
-lspconfig.cmake.setup{capabilities = capabilities}
-lspconfig.yamlls.setup{capabilities = capabilities}
-lspconfig.lemminx.setup{capabilities = capabilities}
-lspconfig.html.setup{capabilities = capabilities}
-lspconfig.cssls.setup{capabilities = capabilities}
-lspconfig.jsonls.setup{capabilities = capabilities}
-lspconfig.texlab.setup{capabilities = capabilities}
+-- Setup each server dynamically
+for _, server in ipairs(installed_servers) do
+	if server == "lua_ls" then
+		-- Custom setup for Lua
+		lspconfig.lua_ls.setup(lua_ls_setup)
+	elseif server == "clangd" then
+		lspconfig.clangd.setup { capabilities = capabilities,
+			cmd = { "clangd", "--fallback-style=webkit" }
+		}
+	else
+		-- Default setup for all other servers
+		lspconfig[server].setup{capabilities = capabilities}
+	end
+end
