@@ -1,5 +1,5 @@
 local trouble = require("trouble")
 
 trouble.setup({
-	open_no_results = true,
+    open_no_results = true,
 })

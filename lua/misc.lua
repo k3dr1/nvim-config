@@ -1,6 +1,6 @@
 -- Font settings
 if vim.g.neovide then
-        vim.o.guifont = "JetBrainsMono NFM:h11.8"
+    vim.o.guifont = "JetBrainsMono NFM:h11.8"
 end
 
 vim.o.cmdheight = 1
@@ -57,9 +57,9 @@ vim.api.nvim_command('sign define DiagnosticSignInfo  text= texthl=Diagnostic
 vim.api.nvim_command('sign define DiagnosticSignHint  text= texthl=DiagnosticSignHint linehl= numhl=')
 
 vim.diagnostic.config {
-        virtual_text = false,
-        signs = true,
-        underline = true,
-        update_in_insert = true,
-        float = true,
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+    float = true,
 }
