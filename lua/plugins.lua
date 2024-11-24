@@ -76,21 +76,21 @@ return {
     },
 
     -- FUNNY
-    { "akinsho/bufferline.nvim",    version = "*",                                 dependencies = { "nvim-tree/nvim-web-devicons" } },
+    { "akinsho/bufferline.nvim",    version = "*",                                   dependencies = { "nvim-tree/nvim-web-devicons" } },
     { "nvim-lualine/lualine.nvim",  dependencies = { "nvim-tree/nvim-web-devicons" } },
     { "sbdchd/neoformat" },
 
     -- NOTETAKING
     --{ "nvim-orgmode/orgmode",
-    --	event = "VeryLazy",
-    --	ft = { "org" },
-    --	config = function()
-    --		-- Setup orgmode
-    --		require("orgmode").setup({
-    --			org_agenda_files = "~/orgfiles/**/*",
-    --			org_default_notes_file = "~/orgfiles/refile.org",
-    --		})
-    --	end,
+    --  event = "VeryLazy",
+    --  ft = { "org" },
+    --  config = function()
+    --          -- Setup orgmode
+    --          require("orgmode").setup({
+    --                  org_agenda_files = "~/orgfiles/**/*",
+    --                  org_default_notes_file = "~/orgfiles/refile.org",
+    --          })
+    --  end,
     --},
 
     -- COLORSCHEMES
