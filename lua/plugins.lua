@@ -1,6 +1,9 @@
 return {
     -- MASON
-    { "williamboman/mason.nvim",          init = function() require("mason").setup() end },
+    {
+        "williamboman/mason.nvim",
+        init = function() require("mason").setup() end
+    },
 
     -- TREESITTER
     { "nvim-treesitter/nvim-treesitter" },
@@ -10,12 +13,29 @@ return {
     { "williamboman/mason-lspconfig.nvim" },
 
     -- UTILITIES
-    { "nvim-telescope/telescope.nvim",    branch = "0.1.x",                              dependencies = { "nvim-lua/plenary.nvim" } },
-    { "nvim-neo-tree/neo-tree.nvim",      branch = "v3.x",                               dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim", } },
+    {
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        -- Optional dependencies
+        dependencies = { { "echasnovski/mini.icons", opts = {} } },
+        -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+        lazy = false,
+    },
+    --{
+    --    "nvim-neo-tree/neo-tree.nvim",
+    --    branch = "v3.x",
+    --    dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim", }
+    --},
     { "mfussenegger/nvim-dap" },
-    --{"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}},
     { "mbbill/undotree" },
-    --{"andweeb/presence.nvim"},
     { "folke/neodev.nvim" },
 
     -- WHICH-KEY
@@ -76,22 +96,16 @@ return {
     },
 
     -- FUNNY
-    { "akinsho/bufferline.nvim",    version = "*",                                   dependencies = { "nvim-tree/nvim-web-devicons" } },
-    { "nvim-lualine/lualine.nvim",  dependencies = { "nvim-tree/nvim-web-devicons" } },
+    {
+        "akinsho/bufferline.nvim",
+        version = "*",
+        dependencies = { "nvim-tree/nvim-web-devicons" }
+    },
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" }
+    },
     { "sbdchd/neoformat" },
-
-    -- NOTETAKING
-    --{ "nvim-orgmode/orgmode",
-    --  event = "VeryLazy",
-    --  ft = { "org" },
-    --  config = function()
-    --          -- Setup orgmode
-    --          require("orgmode").setup({
-    --                  org_agenda_files = "~/orgfiles/**/*",
-    --                  org_default_notes_file = "~/orgfiles/refile.org",
-    --          })
-    --  end,
-    --},
 
     -- COLORSCHEMES
     { "projekt0n/github-nvim-theme" },

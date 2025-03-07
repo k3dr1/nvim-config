@@ -26,11 +26,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- Remapping the Esc to Exit terminal
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
--- Open Neotree with SPC+e
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { noremap = true, silent = true, desc = "Toggle Neotree" })
+-- Open Netrw/Neotree/Oil with SPC+e
+--vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { noremap = true, silent = true, desc = "Toggle Neotree" })
+vim.keymap.set("n", "<leader>e", "<cmd>Oil %/..<CR>", { noremap = true, silent = true, desc = "Open Oil" })
 
 -- Go to config, if you wanna go back you can execute ":cd -"
-vim.keymap.set("n", "<leader>cn", "<cmd>cd " .. vim.fn.stdpath("config") .. "<CR>",
+vim.keymap.set("n", "<leader>cn", "<cmd>Oil " .. vim.fn.stdpath("config") .. "<CR>",
     { noremap = true, silent = true, desc = "Go to config" })
 
 -- Lsp keymaps

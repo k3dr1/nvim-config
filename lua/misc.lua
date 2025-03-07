@@ -9,9 +9,10 @@ vim.o.cmdheight = 1
 vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
 
+-- Turn off the italics in gruvbox-material
+vim.g.gruvbox_material_disable_italic_comment = true
+
 -- Change the theme
---vim.api.nvim_command('colorscheme vscode')
---vim.api.nvim_command('colorscheme kanagawa-dragon')
 vim.api.nvim_command('colorscheme gruvbox-material')
 
 -- Setting relative line numbering
@@ -30,13 +31,8 @@ vim.opt.shiftwidth = 4
 
 vim.opt.list = true
 vim.opt.listchars = {
-    --lead = "·",
-    --nbsp = "·",
-    --space = "·",
     multispace = "·",
-    --lead = "",
-    --eol = "",
-    tab = "󰄾 ", -- , 
+    tab = "󰄾 ",
 }
 
 vim.api.nvim_command('hi CursorLineNr guibg=None')
@@ -63,3 +59,13 @@ vim.diagnostic.config {
     update_in_insert = true,
     float = true,
 }
+
+for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+    local default_diagnostic_handler = vim.lsp.handlers[method]
+    vim.lsp.handlers[method] = function(err, result, context, config)
+        if err ~= nil and err.code == -32802 then
+            return
+        end
+        return default_diagnostic_handler(err, result, context, config)
+    end
+end

@@ -20,7 +20,7 @@ require("misc")
 
 require("configurations.treesitter")
 require("configurations.cmp")
-require("configurations.neotree")
+require("configurations.oil")
 require("configurations.trouble")
 require("configurations.dap")
 require("configurations.lualine")
