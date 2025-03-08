@@ -26,6 +26,3 @@ require("configurations.dap")
 require("configurations.lualine")
 require("configurations.which-key")
 require("configurations.autopairs")
---require("configurations.indent-blankline")
-
---require("configurations.presence")

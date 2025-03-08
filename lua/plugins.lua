@@ -15,7 +15,6 @@ return {
     -- UTILITIES
     {
         "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     {
@@ -29,11 +28,6 @@ return {
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
     },
-    --{
-    --    "nvim-neo-tree/neo-tree.nvim",
-    --    branch = "v3.x",
-    --    dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim", }
-    --},
     { "mfussenegger/nvim-dap" },
     { "mbbill/undotree" },
     { "folke/neodev.nvim" },
@@ -98,7 +92,6 @@ return {
     -- FUNNY
     {
         "akinsho/bufferline.nvim",
-        version = "*",
         dependencies = { "nvim-tree/nvim-web-devicons" }
     },
     {
