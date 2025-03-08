@@ -5,6 +5,21 @@ end
 
 vim.o.cmdheight = 1
 
+-- Add glsl filetypes
+vim.filetype.add({
+    extension = {
+        ["glsl"] = "glsl",
+        ["vert"] = "glsl",
+        ["tesc"] = "glsl",
+        ["tese"] = "glsl",
+        ["frag"] = "glsl",
+        ["geom"] = "glsl",
+        ["comp"] = "glsl",
+        ["vs"] = "glsl",
+        ["fs"] = "glsl",
+    },
+})
+
 -- Scrolloff setttings
 vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
