@@ -39,8 +39,24 @@ for _, server in ipairs(installed_servers) do
         -- Custom setup for Lua
         lspconfig.lua_ls.setup(lua_ls_setup)
     elseif server == "clangd" then
-        lspconfig.clangd.setup { capabilities = capabilities,
+        lspconfig.clangd.setup {
+            capabilities = capabilities,
             cmd = { "clangd", "--fallback-style=webkit" }
+        }
+    elseif server == "hls" then
+        lspconfig.hls.setup {
+            capabilities = capabilities,
+            settings = {
+                haskell = {
+                    plugin = {
+                        rename = {
+                            config = {
+                                crossModule = true
+                            }
+                        }
+                    }
+                }
+            }
         }
     else
         -- Default setup for all other servers
