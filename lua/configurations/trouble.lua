@@ -1,5 +1,3 @@
-local trouble = require("trouble")
-
-trouble.setup({
+require("trouble").setup({
     open_no_results = true,
 })
