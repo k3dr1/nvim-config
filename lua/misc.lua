@@ -1,23 +1,3 @@
--- Font settings
-if vim.g.neovide then
-    vim.o.guifont = "JetBrainsMono NFM:h11.8"
-    vim.g.neovide_title_background_color = string.format(
-        "%x",
-        vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg
-    )
-    vim.g.neovide_title_text_color = "white"
-    -- Floating blur
-    vim.g.neovide_floating_blur_amount_x = 0.0
-    vim.g.neovide_floating_blur_amount_y = 0.0
-    -- Floating shadow
-    vim.g.neovide_floating_shadow = true
-    vim.g.neovide_floating_z_height = 10
-    vim.g.neovide_light_angle_degrees = 45
-    vim.g.neovide_light_radius = 1
-    -- Floating rounding
-    vim.g.neovide_floating_corner_radius = 0.0
-end
-
 -- Command height
 vim.o.cmdheight = 1
 
@@ -35,6 +15,22 @@ vim.filetype.add({
         ["fs"] = "glsl",
     },
 })
+
+-- Setting the default shell
+vim.o.shell = "powershell.exe"
+if (vim.fn.has("win32")) then
+    vim.o.shell = "powershell"
+else
+    vim.o.shell = "pwsh"
+end
+vim.o.shellcmdflag =
+'-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+vim.o.shellquote = ""
+vim.o.shellxquote = ""
+-- set shellquote= shellxquote=
+-- :lua require("toggleterm").setup{}
 
 -- Scrolloff setttings
 vim.o.scrolloff = 5
@@ -54,6 +50,26 @@ vim.api.nvim_command("set ic")
 vim.api.nvim_command("set scl=yes")
 -- Highlighting only the line number
 vim.api.nvim_command("set cursorlineopt=number")
+
+-- Neovide gui settings
+if vim.g.neovide then
+    vim.o.guifont = "JetBrainsMono NFM:h11.40"
+    vim.g.neovide_title_background_color = string.format(
+        "%x",
+        vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg
+    )
+    vim.g.neovide_title_text_color = "white"
+    -- Floating blur
+    vim.g.neovide_floating_blur_amount_x = 0.0
+    vim.g.neovide_floating_blur_amount_y = 0.0
+    -- Floating shadow
+    vim.g.neovide_floating_shadow = true
+    vim.g.neovide_floating_z_height = 10
+    vim.g.neovide_light_angle_degrees = 45
+    vim.g.neovide_light_radius = 1
+    -- Floating rounding
+    vim.g.neovide_floating_corner_radius = 0.0
+end
 
 -- Tab related stuff
 vim.opt.expandtab = true

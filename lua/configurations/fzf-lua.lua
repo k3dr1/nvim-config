@@ -1,7 +1,24 @@
 require("fzf-lua").setup(
     {
-        -- winopts = { row = 1, col = 0 }
-        -- hls = { border = "FloatBorder" }
+        fzf_colors = {
+            -- "fg" as the first element of the table 
+            -- here means grab the foreground of the highlight group
+            -- ["fg+"] =    { "fg", "Title", },
+            ["pointer"] ={ "bg", "CursorLine", },
+            ["bg+"] = {"bg", "CursorLine"},
+            ["gutter"] = "-1",
+        },
+        winopts = {
+            width = 0.90,
+            height = 0.90,
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+            backdrop = 100,
+            preview = {
+                border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+                layout = "vertical",
+                vertical = "up:50%",
+            }
+        },
         keymap = {
             builtin = {
                 true,

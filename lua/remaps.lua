@@ -56,22 +56,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Always match cwd with the oil buffer
 vim.api.nvim_create_autocmd("BufEnter", {
-  desc = "Set cwd to follow directory shown in oil buffers.",
-  group = vim.api.nvim_create_augroup("OilAutoCwd", {}),
-  pattern = "oil:///*",
-  callback = function()
-    if vim.bo.filetype == "oil" then
-      vim.cmd.lcd(require("oil").get_current_dir())
-    end
-  end,
+    desc = "Set cwd to follow directory shown in oil buffers.",
+    group = vim.api.nvim_create_augroup("OilAutoCwd", {}),
+    pattern = "oil:///*",
+    callback = function()
+        if vim.bo.filetype == "oil" then
+            vim.cmd.lcd(require("oil").get_current_dir())
+        end
+    end,
 })
-
--- Telescope keymaps
--- local telescope_builtin = require("telescope.builtin")
--- vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Telescope find files" })
--- vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, { desc = "Telescope live grep" })
--- vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "Telescope buffers" })
--- vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, { desc = "Telescope help tags" })
 
 -- Debugger keymaps (tbd)
 local dap = require("dap")
@@ -91,5 +84,18 @@ vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Qu
 
 -- Fzf-lua keymaps
 vim.keymap.set("n", "<leader>fl", "<cmd>FzfLua<cr>", { desc = "Open FzfLua", })
-vim.keymap.set("n", "<space>fg", "<cmd>FzfLua live_grep<cr>", { desc = "Fzflua files", })
+vim.keymap.set("n", "<space>fg", "<cmd>FzfLua live_grep<cr>", { desc = "Fzflua live grep", })
 vim.keymap.set("n", "<space>ff", "<cmd>FzfLua files<cr>", { desc = "Fzflua files", })
+vim.keymap.set("n", "<space>fb", "<cmd>FzfLua buffers<cr>", { desc = "Fzflua buffers", })
+
+-- Changing the font in neovide
+-- if vim.g.neovide then
+--     vim.keymap.set("n", "<C-=>", function()
+--         local num = tonumber(string.match(vim.o.guifont, "([%d%.]+)$"))
+--         vim.o.guifont = string.gsub(vim.o.guifont, "([%d%.]+)$", tostring(num + 0.05))
+--     end, { desc = "Increase font size", })
+--     vim.keymap.set("n", "<C-->", function()
+--         local num = tonumber(string.match(vim.o.guifont, "([%d%.]+)$"))
+--         vim.o.guifont = string.gsub(vim.o.guifont, "([%d%.]+)$", tostring(num - 0.05))
+--     end, { desc = "Decrease font size", })
+-- end

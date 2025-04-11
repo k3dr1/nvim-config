@@ -18,20 +18,21 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    -- dependencies = { "nvim-tree/nvim-web-devicons" },
-    -- or if using mini.icons/mini.nvim
-    dependencies = { "echasnovski/mini.icons" },
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
+        -- or if using mini.icons/mini.nvim
+        dependencies = { "echasnovski/mini.icons" },
     },
     {
-        'stevearc/oil.nvim',
+        "stevearc/oil.nvim",
         opts = {},
         dependencies = { { "echasnovski/mini.icons", opts = {} } },
         -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
     },
+    { "akinsho/toggleterm.nvim" },
     { "mfussenegger/nvim-dap" },
     { "mbbill/undotree" },
     { "folke/neodev.nvim" },
@@ -45,7 +46,7 @@ return {
             vim.o.timeoutlen = 700
         end,
     },
-    { 'echasnovski/mini.icons',  version = false },
+    { "echasnovski/mini.icons",  version = false },
 
     -- Code completion & general coding
     { "hrsh7th/cmp-nvim-lsp" },
