@@ -8,6 +8,7 @@ if vim.g.neovide then
     vim.g.neovide_title_text_color = "white"
 end
 
+-- Command height
 vim.o.cmdheight = 1
 
 -- Add glsl filetypes
