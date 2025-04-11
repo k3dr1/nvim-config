@@ -54,12 +54,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 
+-- Always match cwd with the oil buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+  desc = "Set cwd to follow directory shown in oil buffers.",
+  group = vim.api.nvim_create_augroup("OilAutoCwd", {}),
+  pattern = "oil:///*",
+  callback = function()
+    if vim.bo.filetype == "oil" then
+      vim.cmd.lcd(require("oil").get_current_dir())
+    end
+  end,
+})
+
 -- Telescope keymaps
-local telescope_builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, { desc = "Telescope help tags" })
+-- local telescope_builtin = require("telescope.builtin")
+-- vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Telescope find files" })
+-- vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, { desc = "Telescope live grep" })
+-- vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "Telescope buffers" })
+-- vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, { desc = "Telescope help tags" })
 
 -- Debugger keymaps (tbd)
 local dap = require("dap")
@@ -69,8 +81,15 @@ vim.keymap.set("n", "<leader>b", function() dap.toggle_breakpoint() end, { desc 
 
 -- Trouble keymaps
 vim.keymap.set("n", "<leader>T", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)", })
-vim.keymap.set("n", "<leader>t", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)", })
+vim.keymap.set("n", "<leader>t", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+    { desc = "Buffer Diagnostics (Trouble)", })
 vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)", })
-vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "LSP Definitions / references / ... (Trouble)", })
+vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+    { desc = "LSP Definitions / references / ... (Trouble)", })
 vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)", })
 vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)", })
+
+-- Fzf-lua keymaps
+vim.keymap.set("n", "<leader>fl", "<cmd>FzfLua<cr>", { desc = "Open FzfLua", })
+vim.keymap.set("n", "<space>fg", "<cmd>FzfLua live_grep<cr>", { desc = "Fzflua files", })
+vim.keymap.set("n", "<space>ff", "<cmd>FzfLua files<cr>", { desc = "Fzflua files", })

@@ -7,7 +7,7 @@ require("oil").setup({
     columns = {
         "icon",
         --"permissions",
-        {"size", highlight = "Special"},
+        { "size", highlight = "Special" },
         --"mtime",
     },
     -- Buffer-local options to use for oil buffers
@@ -62,8 +62,8 @@ require("oil").setup({
         --["<CR>"] = "actions.select",
         ["<CR>"] = function()
             require("oil.actions").select.callback()
-            require("oil.actions").cd.callback()
-            print(" ")
+            -- require("oil.actions").cd.callback()
+            -- print(" ")
         end,
         ["<C-s>"] = { "actions.select", opts = { vertical = true } },
         --["<C-h>"] = { "actions.select", opts = { horizontal = true } },
@@ -77,6 +77,8 @@ require("oil").setup({
         ["-"] = {
             function()
                 require("oil.actions").parent.callback()
+                -- require("oil.actions").cd.callback()
+                -- print(" ")
             end,
             mode = "n"
         },

@@ -6,6 +6,16 @@ if vim.g.neovide then
         vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg
     )
     vim.g.neovide_title_text_color = "white"
+    -- Floating blur
+    vim.g.neovide_floating_blur_amount_x = 0.0
+    vim.g.neovide_floating_blur_amount_y = 0.0
+    -- Floating shadow
+    vim.g.neovide_floating_shadow = true
+    vim.g.neovide_floating_z_height = 10
+    vim.g.neovide_light_angle_degrees = 45
+    vim.g.neovide_light_radius = 1
+    -- Floating rounding
+    vim.g.neovide_floating_corner_radius = 0.0
 end
 
 -- Command height
@@ -34,16 +44,16 @@ vim.o.sidescrolloff = 5
 vim.g.gruvbox_material_disable_italic_comment = true
 
 -- Change the theme
-vim.api.nvim_command('colorscheme gruvbox-material')
+vim.api.nvim_command("colorscheme gruvbox-material")
 
 -- Setting relative line numbering
-vim.api.nvim_command('set number relativenumber')
+vim.api.nvim_command("set number relativenumber")
 -- Ignore case
-vim.api.nvim_command('set ic')
+vim.api.nvim_command("set ic")
 -- Setting the sign column to permanent
-vim.api.nvim_command('set scl=yes')
+vim.api.nvim_command("set scl=yes")
 -- Highlighting only the line number
-vim.api.nvim_command('set cursorlineopt=number')
+vim.api.nvim_command("set cursorlineopt=number")
 
 -- Tab related stuff
 vim.opt.expandtab = true
@@ -56,22 +66,22 @@ vim.opt.listchars = {
     tab = "󰄾 ",
 }
 
-vim.api.nvim_command('hi CursorLineNr guibg=None')
-vim.api.nvim_command('hi CursorLineNr guifg=#ffff00')
-vim.api.nvim_command('hi LineNr guibg=None')
-vim.api.nvim_command('hi SignColumn guibg=None')
-vim.api.nvim_command('hi DiagnosticSignHint guibg=None')
-vim.api.nvim_command('hi DiagnosticSignInfo guibg=None')
-vim.api.nvim_command('hi DiagnosticSignWarn guibg=None')
-vim.api.nvim_command('hi DiagnosticSignError guibg=None')
+vim.api.nvim_command("hi CursorLineNr guibg=None")
+vim.api.nvim_command("hi CursorLineNr guifg=#ffff00")
+vim.api.nvim_command("hi LineNr guibg=None")
+vim.api.nvim_command("hi SignColumn guibg=None")
+vim.api.nvim_command("hi DiagnosticSignHint guibg=None")
+vim.api.nvim_command("hi DiagnosticSignInfo guibg=None")
+vim.api.nvim_command("hi DiagnosticSignWarn guibg=None")
+vim.api.nvim_command("hi DiagnosticSignError guibg=None")
 
-vim.api.nvim_command('set cursorline')
-vim.api.nvim_command('set noshowmode')
+vim.api.nvim_command("set cursorline")
+vim.api.nvim_command("set noshowmode")
 
-vim.api.nvim_command('sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=')
-vim.api.nvim_command('sign define DiagnosticSignWarn  text= texthl=DiagnosticSignWarn linehl= numhl=')
-vim.api.nvim_command('sign define DiagnosticSignInfo  text= texthl=DiagnosticSignInfo linehl= numhl=')
-vim.api.nvim_command('sign define DiagnosticSignHint  text= texthl=DiagnosticSignHint linehl= numhl=')
+vim.api.nvim_command("sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=")
+vim.api.nvim_command("sign define DiagnosticSignWarn  text= texthl=DiagnosticSignWarn linehl= numhl=")
+vim.api.nvim_command("sign define DiagnosticSignInfo  text= texthl=DiagnosticSignInfo linehl= numhl=")
+vim.api.nvim_command("sign define DiagnosticSignHint  text= texthl=DiagnosticSignHint linehl= numhl=")
 
 vim.diagnostic.config {
     virtual_text = false,
@@ -81,7 +91,7 @@ vim.diagnostic.config {
     float = true,
 }
 
-for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+for _, method in ipairs({ "textDocument/diagnostic", "workspace/diagnostic" }) do
     local default_diagnostic_handler = vim.lsp.handlers[method]
     vim.lsp.handlers[method] = function(err, result, context, config)
         if err ~= nil and err.code == -32802 then
