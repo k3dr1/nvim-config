@@ -17,7 +17,6 @@ vim.filetype.add({
 })
 
 -- Setting the default shell
-vim.o.shell = "powershell.exe"
 if (vim.fn.has("win32")) then
     vim.o.shell = "powershell"
 else
@@ -29,8 +28,6 @@ vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 vim.o.shellquote = ""
 vim.o.shellxquote = ""
--- set shellquote= shellxquote=
--- :lua require("toggleterm").setup{}
 
 -- Scrolloff setttings
 vim.o.scrolloff = 5
@@ -94,18 +91,27 @@ vim.api.nvim_command("hi DiagnosticSignError guibg=None")
 vim.api.nvim_command("set cursorline")
 vim.api.nvim_command("set noshowmode")
 
-vim.api.nvim_command("sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=")
-vim.api.nvim_command("sign define DiagnosticSignWarn  text= texthl=DiagnosticSignWarn linehl= numhl=")
-vim.api.nvim_command("sign define DiagnosticSignInfo  text= texthl=DiagnosticSignInfo linehl= numhl=")
-vim.api.nvim_command("sign define DiagnosticSignHint  text= texthl=DiagnosticSignHint linehl= numhl=")
-
-vim.diagnostic.config {
+vim.diagnostic.config({
     virtual_text = false,
-    signs = true,
+    signs = {
+        -- alternative signs:  
+        text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '',
+            [vim.diagnostic.severity.HINT] = '',
+        },
+        -- linehl = {
+        --     [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+        -- },
+        -- numhl = {
+        --     [vim.diagnostic.severity.WARN] = 'WarningMsg',
+        -- },
+    },
     underline = true,
     update_in_insert = true,
     float = true,
-}
+})
 
 for _, method in ipairs({ "textDocument/diagnostic", "workspace/diagnostic" }) do
     local default_diagnostic_handler = vim.lsp.handlers[method]

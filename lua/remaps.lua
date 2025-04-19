@@ -66,6 +66,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+-- Refresh lualine on oil bufenter
+vim.api.nvim_create_autocmd("BufEnter", {
+    desc = "Refresh lualine on oil BufEnter",
+    group = vim.api.nvim_create_augroup("LualineAutoRefresh", {}),
+    pattern = "oil:///*",
+    callback = function()
+        if vim.bo.filetype == "oil" then
+            require("lualine").refresh()
+        end
+    end,
+})
+
 -- Debugger keymaps (tbd)
 local dap = require("dap")
 vim.keymap.set("n", "<leader>dk", function() dap.continue() end, { desc = "DAP continue" })
