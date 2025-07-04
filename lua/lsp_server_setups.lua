@@ -34,7 +34,13 @@ for _, server in ipairs(installed_servers) do
     elseif server == "clangd" then
         lspconfig.clangd.setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            cmd = { "clangd", "--fallback-style=webkit" }
+            cmd = {
+                "clangd",
+                "--fallback-style=webkit",
+                "--enable-config",
+                "--clang-tidy",
+                "--header-insertion=iwyu"
+            }
         })
     elseif server == "hls" then
         lspconfig.hls.setup({
